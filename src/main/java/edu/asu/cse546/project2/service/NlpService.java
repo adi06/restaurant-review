@@ -23,7 +23,7 @@ public class NlpService {
 	private HttpURLConnection conn;
 	private static final Gson gson = new Gson();
 
-	public Sentiment analyzeSentimentText(String text) {
+	public Sentiment analyzeSentimentText(String text) throws IOException {
 		Sentiment sentiment = null;
 		try {
 			Document document = new Document();
@@ -57,10 +57,6 @@ public class NlpService {
 					new com.google.appengine.repackaged.com.google.gson.reflect.TypeToken<AnalyzeResponse>() {
 					}.getType());
 			sentiment = response.getDocumentSentiment();
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
 		} finally {
 			conn.disconnect();
 		}

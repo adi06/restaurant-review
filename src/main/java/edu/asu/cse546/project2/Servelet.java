@@ -29,59 +29,68 @@ public class Servelet extends HttpServlet {
 	private static final NlpService NLP_SERVICE = new NlpService();
 	private static final OpenDataLIVEService OPEN_DATA_LIVE_SERVICE = new OpenDataLIVEService();
 	private static final Logger LOG = Logger.getLogger(Servelet.class.getName());
-	
+
 	public void doGet(final HttpServletRequest req, final HttpServletResponse resp)
 			throws ServletException, IOException {
 		doPost(req, resp);
 	}
 
-	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//String name = req.getParameter("hotel");
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException {
+		// String name = req.getParameter("hotel");
 		String name = "north-india-restaurant-san-francisco";
-		
-		Reviews reviews = getYelpReviews(name);
-		OpenDataLIVEResponse openDataLIVEResponse = getOpenDataLIVEReview(name);
-		
-		//score between 0-1
-		float score = getSentimentScore(reviews);
-		
-		RestaurantReviewVO vo = new RestaurantReviewVO();
-		vo.setScore(score);
-		vo.setRiskCategory(openDataLIVEResponse.getRiskCategory());
-		vo.setViolation(openDataLIVEResponse.getViolationDescription());
-		
-		resp.setContentType("application/json");
-		resp.setStatus(200);
-		PrintWriter pw = resp.getWriter();
-		pw.write(GSON.toJson(vo, RestaurantReviewVO.class));
-		pw.flush();
-		pw.close();
+		try {
+			Reviews reviews = getYelpReviews(name);
+			OpenDataLIVEResponse openDataLIVEResponse = getOpenDataLIVEReview(name);
 
+			// score between 0-1
+			float score = getSentimentScore(reviews);
+
+			RestaurantReviewVO vo = new RestaurantReviewVO();
+			vo.setScore(score);
+			vo.setRiskCategory(openDataLIVEResponse.getRiskCategory());
+			vo.setViolation(openDataLIVEResponse.getViolationDescription());
+
+			resp.setContentType("application/json");
+			resp.setStatus(200);
+			PrintWriter pw = resp.getWriter();
+			pw.write(GSON.toJson(vo, RestaurantReviewVO.class));
+			pw.flush();
+			pw.close();
+		} catch (IOException ioe) {
+			resp.setStatus(400);
+			LOG.severe(ioe.getMessage());
+		} catch (RuntimeException re) {
+			resp.setStatus(500);
+			LOG.severe(re.getMessage());
+		} catch (Exception e) {
+			resp.setStatus(500);
+			LOG.severe(e.getMessage());
+		}
 	}
 
-	private float getSentimentScore(Reviews reviews) {
+	private float getSentimentScore(Reviews reviews) throws IOException {
 		List<Sentiment> sentiments = new ArrayList<>();
-		for(Review review : reviews.getReviews()){
+		for (Review review : reviews.getReviews()) {
 			sentiments.add(NLP_SERVICE.analyzeSentimentText(review.getText()));
 		}
 		float score = 0;
-		for(Sentiment sentiment : sentiments){
+		for (Sentiment sentiment : sentiments) {
 			score += Math.abs(sentiment.getScore());
 		}
-		return score/sentiments.size();
+		return score / sentiments.size();
 	}
 
-	private OpenDataLIVEResponse getOpenDataLIVEReview(String name) {
+	private OpenDataLIVEResponse getOpenDataLIVEReview(String name) throws IOException {
 		name = "Tiramisu Kitchen";
 		OpenDataLIVEResponse openDataLIVEResponses[] = OPEN_DATA_LIVE_SERVICE.getLatestRestaurantReviewByName(name);
-		for(OpenDataLIVEResponse response : openDataLIVEResponses){
-			if(response.getRiskCategory() != null)
+		for (OpenDataLIVEResponse response : openDataLIVEResponses) {
+			if (response.getRiskCategory() != null)
 				return response;
 		}
 		return null;
 	}
 
-	private Reviews getYelpReviews(String name) {
+	private Reviews getYelpReviews(String name) throws IOException {
 		return YELP_SERVICE.getReviews(name);
 	}
 }

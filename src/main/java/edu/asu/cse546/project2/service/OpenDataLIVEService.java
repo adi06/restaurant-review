@@ -21,7 +21,7 @@ public class OpenDataLIVEService {
 	private static final Gson GSON = new Gson();
 	private static final Logger LOG = Logger.getLogger(OpenDataLIVEService.class.getName());
 
-	public OpenDataLIVEResponse[] getLatestRestaurantReviewByName(String name) {
+	public OpenDataLIVEResponse[] getLatestRestaurantReviewByName(String name) throws IOException {
 		HttpURLConnection con = null;
 		OpenDataLIVEResponse openDataLIVEResponse[] = null;
 		BufferedReader br = null;
@@ -49,9 +49,7 @@ public class OpenDataLIVEService {
 					new com.google.appengine.repackaged.com.google.gson.reflect.TypeToken<OpenDataLIVEResponse[]>() {
 					}.getType());
 			LOG.info("response " + openDataLIVEResponse.toString());
-		} catch (Exception e) {
-			LOG.severe("" + e);
-		} finally {
+		}  finally {
 			LOG.info("Closing HTTP connection");
 			if (con != null)
 				con.disconnect();

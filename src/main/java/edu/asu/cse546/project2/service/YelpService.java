@@ -21,7 +21,7 @@ public class YelpService {
 	private HttpURLConnection conn;
 	private static final Gson gson = new Gson();
 
-	public Business searchRestaurant(String name) {
+	public Business searchRestaurant(String name) throws IOException {
 		Business business = null;
 		try {
 			URL url = new URL(BASE_URL + SEARCH_BUSINESS + name);
@@ -42,17 +42,13 @@ public class YelpService {
 			business = gson.fromJson(response.toString(),
 					new com.google.appengine.repackaged.com.google.gson.reflect.TypeToken<Business>() {
 					}.getType());
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
 		} finally {
 			conn.disconnect();
 		}
 		return business;
 	}
 
-	public Reviews getReviews(String name) {
+	public Reviews getReviews(String name) throws IOException {
 		Reviews reviews = null;
 		try {
 			URL url = new URL(BASE_URL + SEARCH_BUSINESS + name + REVIEWS_URL);
@@ -73,10 +69,6 @@ public class YelpService {
 			reviews = gson.fromJson(response.toString(),
 					new com.google.appengine.repackaged.com.google.gson.reflect.TypeToken<Reviews>() {
 					}.getType());
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
 		} finally {
 			conn.disconnect();
 		}
