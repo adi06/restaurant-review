@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="shortcut icon" href="" />
+  <title>Cloud Project</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"  crossorigin="anonymous">
+  <link  href="css/style.css" rel="stylesheet">
+</head>
+<body>
+  <script language="JavaScript" type="text/javascript" src="js/jquery.js" ></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI_M1la-H4IcAKfwyKvIDZSmsp7HarKfA&callback=myMap"
+  type="text/javascript"></script>
+
+
+  <div class="row col-lg-12 col-md-12" id="mainContainer">
+    <div class="header">
+      <div class="logo"></div>
+      <div class="search">
+        <form action="RestaurantReview.html" method="get" id="search">
+          <input type="text" name="hotel" class="input" placeholder="" maxlength="200" id="headerBarSearch" />
+          <input type="text" name="location" class="input" placeholder="" value="San Francisco" data-longgeoid="72057594043244994"maxlength="200" />
+          <button class="submitButton" type="submit">
+            <img class="goIcon" src="img/search.png" alt="Search" height="22px" width="22px" />
+            <span class="buttonCopy">Search</span>
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="row col-lg-12 " id="resultsContainer" style="margin:0 !important;">
+      <div class="col-md-3 displayList">
+        <div class="resultView innerTabs" style="position: relative;">
+          <ul class="searchList" id="results">
+
+
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-9" style="position:relative;margin:0 !important">
+        <div id="map" class="displayMap"></div>
+      </div>
+      <!-- <div class="col-md-4" style="position:fixed !important;"></div> -->
+    </div>
+  </div>
+
+</body>
+</html>
