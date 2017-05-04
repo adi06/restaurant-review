@@ -9,6 +9,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import edu.asu.cse546.project2.model.nlp.AnalyzeRequest;
 import edu.asu.cse546.project2.model.nlp.AnalyzeResponse;
@@ -53,8 +54,7 @@ public class NlpService {
 				str.append(output);
 			}
 
-			AnalyzeResponse response = gson.fromJson(str.toString(),
-					new com.google.appengine.repackaged.com.google.gson.reflect.TypeToken<AnalyzeResponse>() {
+			AnalyzeResponse response = gson.fromJson(str.toString(),new TypeToken<AnalyzeResponse>() {
 					}.getType());
 			sentiment = response.getDocumentSentiment();
 		} finally {

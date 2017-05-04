@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Cloud Project</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+
+    <link href="css/style.css" rel="stylesheet">
+
+    <style rel="stylesheet">
+        /* TEMPLATE STYLES */
+        .nopadding {
+            margin-top: 0 !important;
+        }
+
+         .navbar {
+            background-color: #49071c;
+        }
+
+        footer.page-footer {
+            background-color: #49071c;
+            margin-top: 2rem;
+        }
+        .pattern-4 {
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!--Navigation & Intro-->
+    <header>
+
+
+        <!--Navbar-->
+        <nav class="navbar navbar-toggleable-md navbar-dark ">
+            <div class="container">
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <strong>Restaurant Review</strong>
+                </a>
+                <ul class="nav navbar-nav">
+                  <li>
+                      <div class="row " data-wow-delay="0.4s">
+                          <div class="col-md-4">
+                              <div class="nav-item">
+                                  <input type="text" id="form1" class="form-control validate" value="Hotel?">
+                                  <!-- <label for="form1">Your city</label> -->
+                              </div>
+                          </div>
+                          <div class="col-md-4">
+                              <div class="nav-item">
+                                  <input type="text" id="form2" class="form-control validate" value="San Francisco">
+                                  <!-- <label for="form2">Street</label> -->
+                              </div>
+                          </div>
+                          <div class="col-md-4">
+                              <div class="nav-item">
+                                  <button class="btn btn-lg btn-danger" onclick="formSubmit()">Search</button>
+                              </div>
+                          </div>
+                      </div>
+                  </li>
+                </ul>
+                    <!--Navbar icons-->
+                <ul class="nav navbar-nav nav-flex-icons ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"><i class="fa fa-instagram"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!--/.Navbar-->
+
+    </header>
+    <!--/Navigation & Intro-->
+
+    <!--Mask-->
+    <div class="view hm-black-light">
+        <div class="full-bg-img flex-center pattern-4">
+            <!-- Display  -->
+            <div class="row col-lg-12 " id="resultsContainer" style="margin:0 !important;">
+              <div class="col-md-5 displayList">
+                <div class="resultView innerTabs" style="position: relative;">
+                  <ul class="searchList" id="results">
+                    <li class="result leftLayout">
+                      <div class="contentHolder">
+                        <div class="photoCol"></div>
+                        <div class="infoCol">
+                          <div class="hotel">
+                            <div class="name">Test hotel </div>
+                            <div class="logo"><img src="img/yelp.png" class="yelp"></div>
+                            <div class="rating">23</div><div class="break">a</div>
+                            <div class="sfo"><img src="img/sfo.png" class="yelp"></div>
+                            <div class="rating">23</div><div class="break">a</div>
+                            <div class="logo"><img src="img/yelp.png" class="yelp"></div>
+                            <div class="rating">23</div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-7" style="position:relative;margin:0 !important">
+                <div id="map" class="displayMap"></div>
+              </div>
+              <!-- <div class="col-md-4" style="position:fixed !important;"></div> -->
+            </div>
+          </div>
+        </div>
+    </div>
+    <!--/.Mask-->
+
+
+    <!-- SCRIPTS -->
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/tether.min.js"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+
+    <!-- Main JavaScript -->
+    <script type="text/javascript" src="js/main.js"></script>
+
+    <!-- Google Maps -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI_M1la-H4IcAKfwyKvIDZSmsp7HarKfA&callback=myMap"
+      type="text/javascript"></script>
+
+    <script>
+    new WOW().init();
+    </script>
+
+</body>
+
+</html>

@@ -8,6 +8,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import edu.asu.cse546.project2.model.yelp.Business;
 import edu.asu.cse546.project2.model.yelp.Reviews;
@@ -39,8 +40,7 @@ public class YelpService {
 			while ((output = br.readLine()) != null) {
 				response.append(output);
 			}
-			business = gson.fromJson(response.toString(),
-					new com.google.appengine.repackaged.com.google.gson.reflect.TypeToken<Business>() {
+			business = gson.fromJson(response.toString(),new TypeToken<Business>() {
 					}.getType());
 		} finally {
 			conn.disconnect();
@@ -66,8 +66,7 @@ public class YelpService {
 			while ((output = br.readLine()) != null) {
 				response.append(output);
 			}
-			reviews = gson.fromJson(response.toString(),
-					new com.google.appengine.repackaged.com.google.gson.reflect.TypeToken<Reviews>() {
+			reviews = gson.fromJson(response.toString(),new TypeToken<Reviews>() {
 					}.getType());
 		} finally {
 			conn.disconnect();

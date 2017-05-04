@@ -11,7 +11,7 @@ public class Location {
 	private String city;
 	private String state;
 	private String zipCode;
-	private ArrayList<String> displayAddress;
+	private ArrayList<String> display_address;
 
 	public String getCrossStreets() {
 		return crossStreets;
@@ -77,11 +77,12 @@ public class Location {
 		this.zipCode = zipCode;
 	}
 
-	public ArrayList<String> getDisplayAddress() {
-		return displayAddress;
+	public ArrayList<String> getDisplay_address() {
+		return display_address;
 	}
 
-	public void setDisplayAddress(ArrayList<String> displayAddress) {
-		this.displayAddress = displayAddress;
+	public void setDisplay_address(ArrayList<String> display_address) {
+		this.display_address = display_address;
 	}
+
 }

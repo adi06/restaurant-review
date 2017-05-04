@@ -17,6 +17,7 @@ import edu.asu.cse546.project2.model.nlp.Sentiment;
 import edu.asu.cse546.project2.model.opendata.OpenDataLIVEResponse;
 import edu.asu.cse546.project2.model.yelp.Review;
 import edu.asu.cse546.project2.model.yelp.Reviews;
+import edu.asu.cse546.project2.model.yelp.Business;
 import edu.asu.cse546.project2.service.NlpService;
 import edu.asu.cse546.project2.service.OpenDataLIVEService;
 import edu.asu.cse546.project2.service.YelpService;
@@ -37,18 +38,25 @@ public class Servelet extends HttpServlet {
 
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException {
 		// String name = req.getParameter("hotel");
+		RestaurantReviewVO vo = new RestaurantReviewVO();
 		String name = "north-india-restaurant-san-francisco";
 		try {
 			Reviews reviews = getYelpReviews(name);
-			OpenDataLIVEResponse openDataLIVEResponse = getOpenDataLIVEReview(name);
+//			OpenDataLIVEResponse openDataLIVEResponse = getOpenDataLIVEReview(name);
+			Business business = getBusiness(name);
 
 			// score between 0-1
 			float score = getSentimentScore(reviews);
 
-			RestaurantReviewVO vo = new RestaurantReviewVO();
 			vo.setScore(score);
 			vo.setRiskCategory(openDataLIVEResponse.getRiskCategory());
 			vo.setViolation(openDataLIVEResponse.getViolationDescription());
+			vo.setReviews(reviews.getReviews());
+			vo.setImageUrl(business.getImage_url());
+			vo.setCoordinates(business.getCoordinates());
+			vo.setDisplayAddress(business.getLocation().getDisplay_address());
+			vo.setName(business.getName());
+			vo.setRating(business.getRating());
 
 			resp.setContentType("application/json");
 			resp.setStatus(200);
@@ -92,5 +100,9 @@ public class Servelet extends HttpServlet {
 
 	private Reviews getYelpReviews(String name) throws IOException {
 		return YELP_SERVICE.getReviews(name);
+	}
+	
+	private Business getBusiness(String name) throws IOException {
+		return YELP_SERVICE.searchRestaurant(name);
 	}
 }
