@@ -6,9 +6,6 @@
   {"name":"Deli 23","yelp_id":"deli-23-san-francisco-2","opendata_id": "Deli 23" },
 {"name":"Sweetheart Cafe","yelp_id":"sweetheart-cafe-san-francisco","opendata_id": "Sweetheart Cafe"},
 {"name":"The Olive Garden Italian","yelp_id":"olive-garden-italian-restaurant-san-francisco","opendata_id": "The Olive Garden Italian"},
-{"name":"The Little Chihuahua Mexican","yelp_id":"the-little-chihuahua-san-francisco","opendata_id": "The Little Chihuahua Mexican"},
-{"name":"Joe's Excellent Chinese Cuisine","yelp_id":"joes-excellent-chinese-cuisine-san-francisco-2","opendata_id": "Joe's Excellent Chinese Cuisine"},
-{"name":"Chinatown Restaurants","yelp_id":"chinatown-restaurant-san-francisco-5","opendata_id": "Chinatown Restaurants"}
-
+{"name":"The Little Chihuahua Mexican","yelp_id":"the-little-chihuahua-san-francisco","opendata_id": "The Little Chihuahua Mexican"}
 ]
 }
