@@ -37,13 +37,14 @@ public class Servelet extends HttpServlet {
 	}
 
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException {
-		// String name = req.getParameter("hotel");
+		String yelpId = req.getParameter("yelpId");
+		String opendataId = req.getParameter("opendataId");
 		RestaurantReviewVO vo = new RestaurantReviewVO();
-		String name = "north-india-restaurant-san-francisco";
+		System.out.println(yelpId);
 		try {
-			Reviews reviews = getYelpReviews(name);
-//			OpenDataLIVEResponse openDataLIVEResponse = getOpenDataLIVEReview(name);
-			Business business = getBusiness(name);
+			Reviews reviews = getYelpReviews(yelpId);
+			OpenDataLIVEResponse openDataLIVEResponse = getOpenDataLIVEReview(opendataId);
+			Business business = getBusiness(yelpId);
 
 			// score between 0-1
 			float score = getSentimentScore(reviews);
@@ -57,7 +58,8 @@ public class Servelet extends HttpServlet {
 			vo.setDisplayAddress(business.getLocation().getDisplay_address());
 			vo.setName(business.getName());
 			vo.setRating(business.getRating());
-
+			
+//			System.out.println(GSON.toJson(vo, RestaurantReviewVO.class));
 			resp.setContentType("application/json");
 			resp.setStatus(200);
 			PrintWriter pw = resp.getWriter();
@@ -89,7 +91,7 @@ public class Servelet extends HttpServlet {
 	}
 
 	private OpenDataLIVEResponse getOpenDataLIVEReview(String name) throws IOException {
-		name = "Tiramisu Kitchen";
+//		name = "Tiramisu Kitchen";
 		OpenDataLIVEResponse openDataLIVEResponses[] = OPEN_DATA_LIVE_SERVICE.getLatestRestaurantReviewByName(name);
 		for (OpenDataLIVEResponse response : openDataLIVEResponses) {
 			if (response.getRiskCategory() != null)

@@ -1,0 +1,14 @@
+{"restaurants":[
+  {"name":"Roti Indian Bistro","yelp_id":"roti-indian-bistro-san-francisco","opendata_id": "Roti Indian Bistro" },
+  {"name":"Clay Oven Indian Cuisine","yelp_id":"clay-oven-indian-cuisine-san-francisco","opendata_id": "Clay Oven Indian Cuisine" },
+  {"name":"Kasa Indian Eatery","yelp_id":"kasa-indian-eatery-san-francisco","opendata_id": "Kasa Indian Eatery" },
+  {"name":"Tikka Masala","yelp_id":"tikka-masala-san-francisco-2","opendata_id": "Tikka Masala" },
+  {"name":"Deli 23","yelp_id":"deli-23-san-francisco-2","opendata_id": "Deli 23" },
+{"name":"Sweetheart Cafe","yelp_id":"sweetheart-cafe-san-francisco","opendata_id": "Sweetheart Cafe"},
+{"name":"The Olive Garden Italian","yelp_id":"olive-garden-italian-restaurant-san-francisco","opendata_id": "The Olive Garden Italian"},
+{"name":"The Little Chihuahua Mexican","yelp_id":"the-little-chihuahua-san-francisco","opendata_id": "The Little Chihuahua Mexican"},
+{"name":"Joe's Excellent Chinese Cuisine","yelp_id":"joes-excellent-chinese-cuisine-san-francisco-2","opendata_id": "Joe's Excellent Chinese Cuisine"},
+{"name":"Chinatown Restaurants","yelp_id":"chinatown-restaurant-san-francisco-5","opendata_id": "Chinatown Restaurants"}
+
+]
+}
